@@ -12,8 +12,8 @@ export async function getGames(req, res) {
 
 export async function postGames(req, res) {
     const { name, image, stockTotal, pricePerDay } = req.body;
-    const gameExist = await db.query(`SELECT * FROM games WHERE name = $1;`, [name])
-    if (gameExist.rows[0]) {
+    const gameExists = await db.query(`SELECT * FROM games WHERE name = $1;`, [name])
+    if (gameExists.rows[0]) {
         return res.status(409).send("um jogo com esse nome já existe")
     }
     try {
