@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import gamesRouters from "./routers/games.routers.js"
+import gamesRouters from "./routers/gamesRouters.js"
 
 //import routers from "./routers/index.routers.js";
 
