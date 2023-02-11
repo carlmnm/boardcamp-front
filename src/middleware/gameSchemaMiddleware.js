@@ -1,9 +1,9 @@
 export function validateSchema(schema) {
     return (req, res, next) => {
-        const validation = schema.validate(req.body)
+        const validation = schema.validate(req.body, { abortEarly: false })
         if (validation.error) {
-            const errorMessages = error.details.map(err => err.message)
-            return res.sendStatus(400).send(errorMessages)
+            const errorMessages = validation.error.details.map(err => err.message)
+            return res.status(400).send(errorMessages)
         }
         next()
     }
