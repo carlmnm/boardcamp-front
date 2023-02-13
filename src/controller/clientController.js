@@ -10,7 +10,7 @@ export async function getCustomers(req, res) {
 }
 
 export async function getCustomersById(req, res) {
-    const id = req.params
+    const {id} = req.params
     try {
         const customer = await db.query(`SELECT * FROM customers WHERE id = $1;`, [id])
         if (!customer) {
@@ -40,7 +40,7 @@ export async function postCustomers(req, res) {
 
 export async function putCustomers(req, res) {
     const { name, phone, cpf, birthday } = req.body
-    const id = req.params
+    const {id} = req.params
     const cpfExists = await db.query(`SELECT * FROM customers WHERE cpf = $1 AND id <> $2;`
         , [cpf, id])
     if (cpfExists) {
