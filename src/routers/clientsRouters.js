@@ -6,8 +6,8 @@ import  clientSchema from "../schemas/clientSchema.js"
 const router = Router()
 
 router.get("/customers", getCustomers)
-router.get("/customers:id", getCustomersById)
+router.get("/customers/:id", getCustomersById)
 router.post("/customers", validateSchema(clientSchema), postCustomers)
-router.put("/customers:id", validateSchema(clientSchema), putCustomers)
+router.put("/customers/:id", validateSchema(clientSchema), putCustomers)
 
 export default router
